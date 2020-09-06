@@ -15,10 +15,11 @@ let user = {
 function getName(age, numbers) {
     return this.name + ' ' + age + " " + numbers;
 }
-console.log(getName.call(user,15));
+
+// console.log(getName.call(user,15));
 
 let arr = [2,6,8,125]
-console.log(getName.apply(user, [55, arr]))
+// console.log(getName.apply(user, [55, arr]))
 let newFunc = getName.bind(user);
-console.log(newFunc());
+// console.log(newFunc());
 
