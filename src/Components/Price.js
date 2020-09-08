@@ -1,9 +1,15 @@
-import React from 'react';
-import React from 'react';
+import React,{Component} from 'react';
 
-export default class Price {
+export default class Price extends Component{
    constructor(props) {
+       super(props);
        this.price = this.props.price;
-       console.log(this.price)
+   }
+   render() {
+       return(
+           <>
+           <p>Price: {this.props.price}</p>
+           </>
+       )
    }
 }
