@@ -19,24 +19,32 @@ export default class ToDo extends Component{
             inputValue: event.target.value 
         })
     }
+    handleKeyDown = (event) => {
+        if(event.key === 'Enter'){
+            this.addValue()
+        }
+    }
     addValue = () => {
-        let{inputValue, tasks} = this.state;
+        let{inputValue} = this.state;
+        let tasks = [...this.state.tasks];
         tasks.push(inputValue);
+       
         this.setState({
-            tasks
+            tasks,
+            inputValue: ''
         })
     }
     render() {
-        let taskText = this.state.tasks.map((task, index) => <div key ={index}>{task}</div>);
+        let addTaskArray = this.state.tasks.map((task, index) => <Task key ={index} data={task} />);
        
         return(
             <div>
-                <input onChange={this.handleChangeValue}/>
+                <input onChange={this.handleChangeValue} onKeyDown={this.handleKeyDown} value={this.state.inputValue}/>
                 <button 
                     onClick={this.addValue}>
                     Add Task
                 </button>
-                <Task data={taskText}/>
+                {addTaskArray}
             </div>
         )
     }
