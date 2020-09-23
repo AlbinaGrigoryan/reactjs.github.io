@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import {Container,Row,Col,InputGroup,FormControl,Button} from 'react-bootstrap';
+import {Container,Row,Col,InputGroup,FormControl,Button,Card,Form} from 'react-bootstrap';
 import idGenerator from '../helpers/idGenerator';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
 export default class Todo extends Component{
@@ -17,7 +19,16 @@ export default class Todo extends Component{
         const{inputValue} = this.state;
 
         const tasks = [...this.state.tasks];
-        tasks.push(inputValue);
+        const newTask = {
+            id: idGenerator(),
+            text: inputValue
+        };
+
+        tasks.push(newTask);
+        if(inputValue.length === 0){
+            tasks.pop(inputValue);
+        }
+
         this.setState({
             inputValue: '',
             tasks
@@ -29,8 +40,18 @@ export default class Todo extends Component{
         }
     }
     render() {
-        const taskComponent= this.state.tasks.map((task, index) => 
-        <Col key={idGenerator()}>{task}</Col>
+        const taskComponent= this.state.tasks.map((task) => 
+        <Card style={{ width: '18rem', margin: '5%' }}  key={task.id}>
+            <Card.Body>
+                <Card.Title><Form.Check type="checkbox"/>Task</Card.Title>
+                <Card.Text>
+                    {task.text}
+                </Card.Text>
+                <Button variant='danger'>
+                <    FontAwesomeIcon icon={faTrash }/>
+                </Button>
+            </Card.Body>
+        </Card>
         )
         return(
             <Container fluid>
