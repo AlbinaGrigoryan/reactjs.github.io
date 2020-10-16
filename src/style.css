@@ -1,0 +1,22 @@
+.a {
+    background-color: green;
+    width: 500px;
+    height: 500px;
+    font-size: 30px;
+    text-align: right;
+}
+.b {
+    background-color: blue;
+    width: 300px;
+    height: 300px;
+    font-size: 30px;
+    text-align: center;
+}
+.c {
+    background-color: orange;
+    width: 200px;
+    height: 200px;
+    font-size: 30px;
+    text-align: right;
+    
+}

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {Container,Row,Col} from 'react-bootstrap';
+import {Container,Row,Col,Button, Card} from 'react-bootstrap';
 import idGenerator from '../helpers/idGenerator';
 import NewTask from './NewTask';
-import CardTask from './CardTask'
+import CardTask from './CardTask/CardTask'
 
 
 export default class Btodo extends Component{
@@ -25,7 +25,7 @@ export default class Btodo extends Component{
         })
     }
    
-    onRemoveTask = (taskid) => {
+    onRemoveTask = (taskid) => () => {
         const newTasks = this.state.tasks.filter(task => task.id !== taskid);
 
         this.setState({
@@ -55,3 +55,4 @@ export default class Btodo extends Component{
         )
     }
 }
+
